@@ -4,7 +4,7 @@ Allows you to draw a maze, then shows it being automatically solved.
 This file contains 2 main functions:
 maze_maker(size)
 which allows you to create a maze of the given size, complete with a start and finish square, on a grid.
-It prints the list form of the maze so it can be used again.
+It then saves the maze for you to use again.
 
 maze_solver(maze, distance)
 which animates my algorithm solving the maze, using the given distance function.

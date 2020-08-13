@@ -5,7 +5,7 @@ This file contains 2 main functions:
 
 maze_maker(size)
 
-which allows you to create a maze of the given size, complete with a start and finish square, on a grid.
+which allows you to create a maze of the given size (given as an (x,y) tuple), complete with a start and finish square, on a grid.
 It then saves the maze for you to use again.
 
 

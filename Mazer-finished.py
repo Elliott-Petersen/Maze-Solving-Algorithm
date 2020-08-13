@@ -41,14 +41,14 @@ def maze_maker(size):
     using the given distance function.
         ''')
         
-    if size>500:
+    if size[0]>500 or size[1]>500:
         print('Too big. Please try a smaller number')
         return None
-    elif size<2:
+    elif size[0]<2:
         print('Too small. Please try a larger number')
         return None
     
-    size=(size,size)
+    #size=(size,size)
     mp=[[0 for j in range(size[0])] for i in range(size[1])] #makes a square of zeroes
     
     size=(size[0]+2,size[1]+2)
@@ -81,13 +81,13 @@ def maze_maker(size):
     
     
     #creates the grid and the buttonr
-    pygame.draw.rect(window,(128,128,128),(0,500+x,580+y,100))
+    pygame.draw.rect(window,(123,123,123),(0,500+y+1,500+x,80))
     pygame.draw.rect(window,(0,0,0),(30,530+y,20,20))
     pygame.draw.rect(window,(255,255,255),(70,530+y,20,20))
     pygame.draw.rect(window,(255,0,0),(110,530+y,20,20))
     pygame.draw.rect(window,(0,255,0),(150,530+y,20,20))
     pygame.draw.rect(window,(0,0,255),(200,530+y,100,20))
-    
+
     for i in range(size[1]):
         pygame.draw.line(window,(123,123,123),(0,yw*i),(500+x,yw*i))
     for j in range(size[0]):
@@ -139,18 +139,18 @@ def maze_maker(size):
                 
                 #creates a numerical map of the grid
                 if colour==(0,0,0):
-                    mp[p[1]//xw][p[0]//yw]=1
+                    mp[p[1]//yw][p[0]//xw]=1
                     
                 elif colour==(255,0,0) and all([2 not in i for i in mp]):
-                    mp[p[1]//xw][p[0]//yw]=2
-                    start=[p[1]//xw,p[0]//yw]
+                    mp[p[1]//yw][p[0]//xw]=2
+                    start=[p[1]//yw,p[0]//xw]
                     
                 elif colour==(0,255,0) and all([3 not in i for i in mp]):
-                    mp[p[1]//xw][p[0]//yw]=3
-                    end=[p[1]//xw,p[0]//yw]
+                    mp[p[1]//yw][p[0]//xw]=3
+                    end=[p[1]//yw,p[0]//xw]
                     
                 elif colour==(255,255,255):
-                    mp[p[1]//xw][p[0]//yw]=0
+                    mp[p[1]//yw][p[0]//xw]=0
     return 
 
 def find_end(walls):
@@ -189,7 +189,7 @@ def maze_solver(mp, distance= lambda a,b: ((a[0]-b[0])**2+(a[1]-b[1])**2)):
     '''
     if not mp:
         return None
-    size=(len(mp),len(mp[0]))
+    size=(len(mp[0]),len(mp))
     
     end,start = find_end(mp),find_start(mp)
     
@@ -353,7 +353,7 @@ def maze_solver(mp, distance= lambda a,b: ((a[0]-b[0])**2+(a[1]-b[1])**2)):
 #     return abs(a[0]-b[0])+abs(a[1]-b[1])
 
 
-walls,start,end=maze_maker(50)
+walls,start,end=maze_maker((31,19))
 
 start,end=find_start(walls),find_end(walls)
 

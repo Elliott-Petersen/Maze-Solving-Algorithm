@@ -1,7 +1,6 @@
 from math import inf
 from collections import OrderedDict as odict
 import pygame
-import numpy
 pygame.init()
 
 def keep_open():
@@ -10,7 +9,7 @@ def keep_open():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-def maze_maker(size):
+def maze_maker(size=(20,20)):
     '''
 
     Parameters

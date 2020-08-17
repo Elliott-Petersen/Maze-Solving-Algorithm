@@ -23,7 +23,7 @@ The default is a variation of the "best first" searth algorithm, that tries to g
 
 These are the constraints that a custom function has to adhere to:
 
-The first 2 parameters must be the positions of the start and end nodes, respectively.
+The first 2 parameters must be the positions of the current and end nodes, respectively.
 
 It must return a float; a number.
 
